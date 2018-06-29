@@ -1,0 +1,14 @@
+uuid: 7e5e6366-6fcb-427a-9872-21d1a2912c25
+name: 'Assignment dev'
+mail: samiksha.gupta008@yahoo.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI
