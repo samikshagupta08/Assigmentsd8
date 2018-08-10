@@ -22,7 +22,6 @@ class SiteApiKeyController extends ControllerBase {
         throw new AccessDeniedHttpException();
       }
       else {
-
         $json_array['data'] = array(
           'type' => $node->get('type')->target_id,
           'id' => $node->get('nid')->value,
