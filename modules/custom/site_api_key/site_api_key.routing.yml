@@ -1,0 +1,11 @@
+siteapikey_page_json:  
+  path: '/page_json/{api_key}/{node}'  
+  options:
+    parameters:
+      node:
+        type: entity:node
+  defaults:  
+    _controller: '\Drupal\site_api_key\Controller\SiteApiKeyController::content'
+    _title: 'Node Data'  
+  requirements:
+   _permission: 'access content'

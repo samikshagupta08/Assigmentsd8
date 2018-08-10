@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * Implements hook_form_alter().
+ */
+function site_api_key_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'system_site_information_settings') {
+    $config = \Drupal::config('system.site');
+    $form['siteapikey'] = [
+      '#type' => 'textfield',
+      '#title' => t('Site API Key'),
+      '#description' => t('Site API key'),
+      '#default_value' => ($config->get('siteapikey') != "") ? $config->get('siteapikey') : "No API Key yet",
+    ];
+    // changed Save confguration button value to Update configuration.
+    $form['actions']['submit']['#value'] = 'Update Configuration';
+    // custom submit handler to submit siteapikey value.
+    $form['actions']['submit']['#submit'][] = 'site_api_key_form_submit';
+  }
+}
+
+/**
+ * Implements submit handler
+ */
+function site_api_key_form_submit($form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  \Drupal::configFactory()->getEditable('system.site')
+    ->set('siteapikey', $form_state->getValue('siteapikey'))
+    ->save();
+  drupal_set_message('The site API key has been saved with value - ' . $form_state->getValue('siteapikey'), 'status');
+}
